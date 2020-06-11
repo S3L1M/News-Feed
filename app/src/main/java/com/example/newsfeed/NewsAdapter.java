@@ -12,8 +12,8 @@ import androidx.annotation.Nullable;
 
 import java.util.List;
 
-public class NewAdapter extends ArrayAdapter<News> {
-    public NewAdapter(@NonNull Context context, int resource, @NonNull List<News> news) {
+public class NewsAdapter extends ArrayAdapter<News> {
+    public NewsAdapter(@NonNull Context context, @NonNull List<News> news) {
         super(context, 0, news);
     }
 
