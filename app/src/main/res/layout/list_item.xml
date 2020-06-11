@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_section"
+        android:textColor="@color/gray"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        tools:text="Section"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_headline"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        tools:text="This is a long heading containing a lengthy title."
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_auther"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:textColor="@color/gray"
+        tools:text="Auther"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_date"
+        android:textSize="16sp"
+        android:textStyle="italic"
+        android:layout_marginTop="4dp"
+        android:textColor="@color/green"
+        tools:text="26/05/2020"/>
+
+</LinearLayout>
