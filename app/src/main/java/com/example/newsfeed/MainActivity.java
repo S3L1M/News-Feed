@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.loader.app.LoaderManager;
 import androidx.loader.content.Loader;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.content.Intent;
 import android.graphics.ColorSpace;
@@ -27,14 +28,20 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<ArrayList<News>> {
+public class MainActivity extends AppCompatActivity
+        implements LoaderManager.LoaderCallbacks<ArrayList<News>>, SwipeRefreshLayout.OnRefreshListener {
 
     private NewsAdapter adapter;
+    private SwipeRefreshLayout swipeRefresh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        swipeRefresh = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh);
+        swipeRefresh.setOnRefreshListener(this);
+        swipeRefresh.setColorSchemeColors(getResources().getColor(R.color.colorPrimary));
 
         adapter = new NewsAdapter(this);
         ListView listView = (ListView) findViewById(R.id.listview);
@@ -59,6 +66,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public void onLoadFinished(@NonNull Loader<ArrayList<News>> loader, ArrayList<News> data) {
+        swipeRefresh.setRefreshing(false);
         if (data != null) {
             adapter.setNotifyOnChange(false);
             adapter.clear();
@@ -70,5 +78,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public void onLoaderReset(@NonNull Loader<ArrayList<News>> loader) {
 
+    }
+
+    @Override
+    public void onRefresh() {
+        getSupportLoaderManager().restartLoader(0, null, this);
     }
 }
