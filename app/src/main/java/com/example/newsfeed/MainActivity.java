@@ -49,9 +49,9 @@ public class MainActivity extends AppCompatActivity
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                News news = adapter.getItem(position);
+                News singleNews = adapter.getItem(position);
                 Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse("https://google.com"));
+                i.setData(Uri.parse(singleNews.getUrl()));
                 startActivity(i);
             }
         });
