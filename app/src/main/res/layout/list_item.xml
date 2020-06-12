@@ -34,7 +34,7 @@
         android:textStyle="bold"
         android:layout_marginTop="4dp"
         android:textColor="@color/gray"
-        tools:text="Auther"/>
+        tools:text="Author"/>
 
     <TextView
         android:layout_width="wrap_content"
