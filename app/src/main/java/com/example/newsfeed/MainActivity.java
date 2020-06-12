@@ -6,12 +6,17 @@ import android.content.Intent;
 import android.graphics.ColorSpace;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONException;
+
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -25,10 +30,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ArrayList<News> news = new ArrayList<News>();
+        ArrayList<News> news1 = new ArrayList<News>();
         for(int i=0;i<20;i++) {
-            news.add(new News("This is a long headline filled with relatively lengthy text",
-                    "Mark Nickolson", "Technology", "25/05/2020"));
+            news1.add(new News("This is a long headline filled with relatively lengthy text",
+                    "Mark Nickolson", "Technology", "25/05/2020", ""));
+        }
+
+        URL url = null;
+        ArrayList<News> news = new ArrayList<News>();
+        try {
+            url = NetworkUtils.createUrl();
+            String jsonResponse = NetworkUtils.makeHttpRequest(url);
+            news = NetworkUtils.parseJson(jsonResponse);
+        } catch (IOException e) {
+            e.printStackTrace();
+            Toast.makeText(this, "JSONException", Toast.LENGTH_LONG).show();
+        } catch (JSONException e) {
+            e.printStackTrace();
+            Toast.makeText(this, "IOException", Toast.LENGTH_LONG).show();
         }
 
         final NewsAdapter adapter = new NewsAdapter(this, news);
