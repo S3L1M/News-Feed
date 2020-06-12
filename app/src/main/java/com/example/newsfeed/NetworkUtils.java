@@ -26,7 +26,7 @@ public class NetworkUtils {
                 .appendQueryParameter("tag", "technology/technology")
                 .appendQueryParameter("page-size", "20")
                 .appendQueryParameter("order-by", "newest")
-                .appendQueryParameter("api-key", "test");
+                .appendQueryParameter("api-key", "63252191-020b-4473-9478-770d3d2d546f");
         return new URL(builder.build().toString());
     }
 
@@ -52,7 +52,7 @@ public class NetworkUtils {
                 Log.e("mainActivity", "Error response code: " + urlConnection.getResponseCode());
             }
         } catch (IOException e) {
-            Log.e("Queryutils", "Error making HTTP request: ", e);
+            Log.e("NetworkUtils", "Error making HTTP request: ", e);
         } finally {
             if (urlConnection != null) {
                 urlConnection.disconnect();
@@ -88,6 +88,7 @@ public class NetworkUtils {
             String headline = obj.getString("webTitle");
             String url = obj.getString("webUrl");
             String date = obj.getString("webPublicationDate");
+            date = date.substring(0, 10)+" "+date.substring(11, 16);
             String section = obj.getString("sectionName");
             news.add(new News(headline, "", section, date, url));
         }
