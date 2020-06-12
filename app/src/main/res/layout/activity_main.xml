@@ -18,4 +18,12 @@
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/no_internet"
+        android:text="No Internet Connection"
+        android:textSize="20sp"
+        android:gravity="center"/>
+
 </RelativeLayout>

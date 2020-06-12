@@ -33,11 +33,13 @@ public class MainActivity extends AppCompatActivity
 
     private NewsAdapter adapter;
     private SwipeRefreshLayout swipeRefresh;
+    private TextView tv_no_internet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        tv_no_internet = (TextView) findViewById(R.id.no_internet);
 
         swipeRefresh = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh);
         swipeRefresh.setOnRefreshListener(this);
@@ -72,6 +74,8 @@ public class MainActivity extends AppCompatActivity
             adapter.clear();
             adapter.setNotifyOnChange(true);
             adapter.addAll(data);
+            tv_no_internet.setText("");
+
         }
     }
 

@@ -26,7 +26,7 @@ public class NetworkUtils {
                 .appendQueryParameter("tag", "technology/technology")
                 .appendQueryParameter("page-size", "20")
                 .appendQueryParameter("order-by", "newest")
-                .appendQueryParameter("api-key", "63252191-020b-4473-9478-770d3d2d546f");
+                .appendQueryParameter("api-key", "test");
         return new URL(builder.build().toString());
     }
 
