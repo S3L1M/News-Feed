@@ -24,6 +24,7 @@ public class NetworkUtils {
                 .encodedAuthority("content.guardianapis.com")
                 .appendPath("search")
                 .appendQueryParameter("tag", "technology/technology")
+                .appendQueryParameter("show-tags", "contributor")
                 .appendQueryParameter("page-size", "20")
                 .appendQueryParameter("order-by", "newest")
                 .appendQueryParameter("api-key", "test");
@@ -90,7 +91,14 @@ public class NetworkUtils {
             String date = obj.getString("webPublicationDate");
             date = date.substring(0, 10)+" "+date.substring(11, 16);
             String section = obj.getString("sectionName");
-            news.add(new News(headline, "", section, date, url));
+            JSONArray tagsArray = obj.getJSONArray("tags");
+            String author = "";
+            if (tagsArray.length() == 0) {
+                author = null;
+            } else {
+                author = tagsArray.getJSONObject(0).getString("webTitle");
+            }
+            news.add(new News(headline, author, section, date, url));
         }
 
         return news;
