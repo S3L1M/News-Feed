@@ -10,11 +10,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class NewsAdapter extends ArrayAdapter<News> {
-    public NewsAdapter(@NonNull Context context, @NonNull List<News> news) {
-        super(context, 0, news);
+    public NewsAdapter(@NonNull Context context) {
+        super(context, 0, new ArrayList<News>());
     }
 
     @NonNull
